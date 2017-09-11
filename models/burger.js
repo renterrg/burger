@@ -8,10 +8,8 @@ module.exports = function(sequelize, DataTypes) {
       		}
 		},
 		devoured: {
-			type: DataTypes.BOOLEAN
-		},
-		date: {
-			type: DataTypes.DATE
+			type: DataTypes.BOOLEAN,
+			defaultValue: false
 		}
 	});
 	return Burger;

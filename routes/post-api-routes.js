@@ -23,4 +23,16 @@ module.exports = function(app) {
 			res.json(dbBurger);
 		});
 	});
+
+	app.put("/api/posts", function(req, res) {
+	    db.Burger.update({
+	      devoured: req.body.devoured,
+	      }, {
+	        where: {
+	          id: req.body.id
+	        }
+	    }).then(function(dbBurger) {
+	      res.json(dbBurger);
+	    });
+  	});
 }
