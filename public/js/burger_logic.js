@@ -3,7 +3,9 @@ $(document).ready(function() {
 	var burgerInput = $("#text_area");
 	var burgerList = $("tbody");
 
+
 	$(document).on("submit", "#burger_form", handleBurgerFormSubmit);
+	$(document).on("submit", ".devour_btn", handleDevourBtn);
 
 	function handleBurgerFormSubmit(event) {
 		event.preventDefault();
@@ -21,12 +23,13 @@ $(document).ready(function() {
 			.then(getBurgers);
 	}
 
+
+
 	function createBurgerRow(burgerData) {
 		var newTr = $("<tr>");
-		var newDevourBtn = $("<div>");
 		newTr.data("burger", burgerData);
 		newTr.append("<td>" + burgerData.burger_name + "</td>");
-		newDevourBtn.append("<button>");
+		newTr.append("<button class='devour_btn' type='submit' value='" + burgerData.devoured + "'>Devour</button>");
 		return newTr;
 	}
 
@@ -35,7 +38,7 @@ $(document).ready(function() {
 			console.log(data);
 			var rowsToAdd = [];
 			for (var i = 0; i < data.length; i++) {
-				rowsToAdd.push(createBurgerRow(data[i])); 
+				rowsToAdd.push(createBurgerRow(data[i]));
 			}
 			renderBurgerList(rowsToAdd);
 			burgerInput.val("");
@@ -47,6 +50,22 @@ $(document).ready(function() {
 		if (rows.length) {
 			burgerList.prepend(rows);
 		};
+	}
+
+	function handleDevourBtn(event, burgerData) {
+		event.preventDefault();
+
+		if (!burgerData.devoured) {
+
+			$.ajax({
+					method: "PUT",
+					url: "/api/posts",
+					data: {
+						id: burgerData.id,
+						devoured: true
+			  		}
+			    }).done(getBurgers);
+		}
 	}
 
 });
