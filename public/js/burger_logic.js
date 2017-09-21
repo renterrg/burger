@@ -26,6 +26,7 @@ $(document).ready(function() {
 
 
 	function createBurgerRow(burgerData) {
+
 		var newTr = $("<tr>");
 		newTr.data("burger", burgerData);
 		newTr.append("<td>" + burgerData.burger_name + "</td>");
@@ -52,9 +53,9 @@ $(document).ready(function() {
 		};
 	}
 
-	function handleDevourBtn(event, burgerData) {
+	function handleDevourBtn(event) {
 		event.preventDefault();
-
+		console.log(event);
 		if (!burgerData.devoured) {
 
 			$.ajax({
