@@ -26,7 +26,7 @@ module.exports = function(app) {
 
 	app.put("/api/posts", function(req, res) {
 	    db.Burger.update({
-	      devoured: req.body.devoured,
+	      devoured: req.body.devoured
 	      }, {
 	        where: {
 	          id: req.body.id

@@ -27,10 +27,9 @@ $(document).ready(function() {
 
 	function createBurgerRow(burgerData) {
 
-		var newTr = $("<tr>");
-		newTr.data("burger", burgerData);
+		var newTr = $("<tr>").attr('id', burgerData.id);
 		newTr.append("<td>" + burgerData.burger_name + "</td>");
-		newTr.append("<button class='devour_btn' type='submit' value='" + burgerData.devoured + "'>Devour</button>");
+		newTr.append("<button class='devour_btn' type='submit' value='false'>Devour</button>");
 		return newTr;
 	}
 
@@ -55,14 +54,14 @@ $(document).ready(function() {
 
 	function handleDevourBtn(event) {
 		event.preventDefault();
-		console.log(event);
-		if (!burgerData.devoured) {
+
+		if ($(event.target).val() == 'false') {
 
 			$.ajax({
 					method: "PUT",
 					url: "/api/posts",
 					data: {
-						id: burgerData.id,
+						id: $(event.target).parent().attr('id'),
 						devoured: true
 			  		}
 			    }).done(getBurgers);
