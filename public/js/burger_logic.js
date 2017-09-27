@@ -3,9 +3,8 @@ $(document).ready(function() {
 	var burgerInput = $("#text_area");
 	var burgerList = $("tbody");
 
-
 	$(document).on("submit", "#burger_form", handleBurgerFormSubmit);
-	$(document).on("submit", ".devour_btn", handleDevourBtn);
+	$(document).on("click", ".devour_btn", handleDevourBtn);
 
 	function handleBurgerFormSubmit(event) {
 		event.preventDefault();
@@ -27,9 +26,11 @@ $(document).ready(function() {
 
 	function createBurgerRow(burgerData) {
 
+
 		var newTr = $("<tr>").attr('id', burgerData.id);
 		newTr.append("<td>" + burgerData.burger_name + "</td>");
-		newTr.append("<button class='devour_btn' type='submit' value='false'>Devour</button>");
+		newTr.append("<button type='button' class='devour_btn' value='false'>Devour</button>");
+		newTr.append("<td class='devoured_container'></td>");
 		return newTr;
 	}
 
@@ -65,7 +66,12 @@ $(document).ready(function() {
 						devoured: true
 			  		}
 			    }).done(getBurgers);
+
+			
+
 		}
 	}
+
+
 
 });
