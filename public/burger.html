@@ -15,31 +15,49 @@
 <body>
 
 
-<div class="jumbotron">
-  <h1 class="display-3">Eat-Da-Burger!</h1>
-  	<div id="burger_container">
-			<table class="table table-striped">
-				<thead>Burger List</thead>
-				<tbody>
-					<tr id="form-row">
-					    <form id="burger_form">
-						  <td>
-						    <input type="text" id="text_area"></input>
-						  </td>
-						  <td>
-						  	<button type="submit" class="btn btn-primary">Submit</button>
-						  </td>
-						  <td>
-						  	<h4>Enter a burger you want to eat. Click the "Submit" button.</h4>
-						  </td>
-						</form>
-					</tr>
-				</tbody>
-			</table>
+<div class="jumbotron" style="background-color: white">
+	<div class='row'>
+		<div class='col-9'>
+			<h1 class="display-3">Eat-Da-Burger!</h1>
+		</div>
+			<img src="burgerIcon.png" height='200' width='200'>
+
 	</div>
+	<hr>
+			<div class='row'>
+
+				<div class='col-7'>
+			  	<div id="burger_container">
+						<table class="table table-striped">
+							<thead><h4>Burger List</h4></thead>
+							<tbody id="burger_body">
+								<tr id="burger-form-row">
+								    <form id="burger_form">
+										  <td>
+										    <input type="text" id="text_area"></input>
+										  	<button type="submit" class="btn btn-success">Submit</button>
+												<h4>Enter a burger you want to eat. Click the "Submit" button.</h4>
+										  </td>
+										</form>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class='col-5'>
+					<table class='table table-striped'>
+						<thead><h4>Devoured!</h4></thead>
+						<tbody id="devoured_body">
+							<tr id='devoured-form-row'></tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
 </div>
-	
-	
+
+
 	<script src="js/burger_logic.js" type="text/javascript"></script>
 
 
