@@ -46,6 +46,8 @@ $(document).ready(function() {
 	}
 
 	function renderBurgerList(rows) {
+
+		burgerList.empty();
 		burgerList.children().not(":last").remove();
 		if (rows.length) {
 			burgerList.prepend(rows);
